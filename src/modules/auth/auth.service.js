@@ -72,7 +72,7 @@ const registerCenter = async (userData) => {
 const login = async (email, password) => {
     try {
         // Find user by email and include password field
-        const user = await User.findOne({ email }).select('+password').populate('centerId', 'name email isActive');
+        const user = await User.findOne({ email }).select('+password').populate('centerId', 'name email phone address logo isActive');
 
         if (!user) {
             throw new Error('Invalid credentials');

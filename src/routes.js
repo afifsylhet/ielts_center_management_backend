@@ -7,6 +7,9 @@ const studentsRoutes = require('./modules/students/students.routes');
 const invoicesRoutes = require('./modules/invoices/invoices.routes');
 const debitsRoutes = require('./modules/debits/debits.routes');
 const coursesRoutes = require('./modules/courses/courses.routes');
+const teachersRoutes = require('./modules/teachers/teachers.routes');
+const staffRoutes = require('./modules/staff/staff.routes');
+const reportsRoutes = require('./modules/reports/reports.routes');
 
 const router = express.Router();
 
@@ -31,5 +34,8 @@ router.use('/students', studentsRoutes);
 router.use('/invoices', invoicesRoutes);
 router.use('/debits', debitsRoutes);
 router.use('/courses', coursesRoutes);
+router.use('/teachers', teachersRoutes);
+router.use('/staff', staffRoutes);
+router.use('/reports', reportsRoutes);
 
 module.exports = router;
