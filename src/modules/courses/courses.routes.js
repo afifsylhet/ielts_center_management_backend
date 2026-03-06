@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const courseController = require('./courses.controller');
-const { authenticate } = require('../../middlewares/auth.middleware');
-const { requireRole } = require('../../middlewares/role.middleware');
+const authenticate = require('../../middlewares/auth.middleware');
+const { authorize } = require('../../middlewares/role.middleware');
 
 /**
  * Course Routes
@@ -16,15 +16,15 @@ router.get('/active', authenticate, courseController.getActiveCourses);
 router.get('/', authenticate, courseController.getCourses);
 
 // Create a new course (only center admin)
-router.post('/', authenticate, requireRole(['center_admin']), courseController.createCourse);
+router.post('/', authenticate, authorize('center_admin'), courseController.createCourse);
 
 // Get a single course
 router.get('/:id', authenticate, courseController.getCourseById);
 
 // Update a course (only center admin)
-router.put('/:id', authenticate, requireRole(['center_admin']), courseController.updateCourse);
+router.put('/:id', authenticate, authorize('center_admin'), courseController.updateCourse);
 
 // Delete a course (only center admin)
-router.delete('/:id', authenticate, requireRole(['center_admin']), courseController.deleteCourse);
+router.delete('/:id', authenticate, authorize('center_admin'), courseController.deleteCourse);
 
 module.exports = router;
