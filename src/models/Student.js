@@ -38,6 +38,11 @@ const studentSchema = new mongoose.Schema({
         required: [true, 'Session is required'],
         trim: true
     },
+    courseId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course',
+        index: true
+    },
     status: {
         type: String,
         enum: ['active', 'inactive', 'completed'],
